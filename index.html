@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LockQR</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  /* Global styles */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  }
+
+  /* Card container */
+  #qrContainer {
+    background: #ffffffcc;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s;
+  }
+  #qrContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+
+  /* QR Code styling */
+  #qrCode {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  /* Optional: subtle animation */
+  #qrCode canvas {
+    border-radius: 15px;
+    transition: transform 0.3s;
+  }
+  #qrCode canvas:hover {
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+
+<div id="qrContainer">
+  <h2>LockQR</h2>
+  <div id="qrCode"></div>
+</div>
+
+<script>
+const githubPageLink = "https://humayunshariarhimu.github.io/QR-Security/AuthenticQR.html"; // তোমার GitHub Pages URL
+new QRCode(document.getElementById("qrCode"), {
+  text: githubPageLink,
+  width: 200,
+  height: 200,
+  colorDark : "#000000",
+  colorLight : "#ffffff",
+  correctLevel : QRCode.CorrectLevel.H
+});
+</script>
+
+</body>
+</html>
