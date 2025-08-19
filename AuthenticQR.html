@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AuthenticQR</title>
+<style>
+  /* Global styles */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+  }
+
+  /* Card container */
+  #lockLayer {
+    background: #ffffffcc; /* semi-transparent white */
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 300px;
+    backdrop-filter: blur(10px);
+  }
+
+  h2 {
+    margin-bottom: 25px;
+    font-size: 22px;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+
+  /* Input styles */
+  #lockLayer input {
+    padding: 12px;
+    font-size: 18px;
+    width: 100px;
+    text-align: center;
+    border: 2px solid #66a6ff;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+  }
+  #lockLayer input:focus {
+    border-color: #ff758c;
+    box-shadow: 0 0 10px rgba(255,117,140,0.5);
+  }
+
+  /* Button styles */
+  #lockLayer button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(90deg, #ff758c, #ff7eb3);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  #lockLayer button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+
+  /* Status message */
+  #status {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+</style>
+</head>
+<body>
+
+<div id="lockLayer">
+  <h2>AuthenticQR</h2>
+  <input type="text" id="lastTwoInput" maxlength="2" placeholder="__">
+  <button onclick="verifyLastTwo()">Verify</button>
+  <div id="status"></div>
+</div>
+
+<script>
+const accountNumber = "01711111121"; // QR-এ থাকা নম্বরের মূল ভ্যালু
+
+function verifyLastTwo(){
+  const input = document.getElementById("lastTwoInput").value.trim();
+  const statusDiv = document.getElementById("status");
+  if(input.length !== 2){ 
+    alert("Enter exactly 2 digits"); 
+    return; 
+  }
+
+  const lastTwo = accountNumber.slice(-2);
+  if(input === lastTwo){
+    statusDiv.innerText = "✅ OK: Last 2 digits match!";
+    statusDiv.style.color = "green";
+  } else {
+    statusDiv.innerText = "❌ Non-Valid: Access denied!";
+    statusDiv.style.color = "red";
+  }
+}
+</script>
+
+</body>
+</html>
